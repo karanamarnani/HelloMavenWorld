@@ -1,0 +1,106 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<groupId>com.sindhisaaen</groupId>
+	<artifactId>HelloMavenWorld</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<modelVersion>4.0.0</modelVersion>
+	<packaging>jar</packaging>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.8.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<version>5.0.2</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>5.4.1.Final</version>
+		</dependency>
+		
+		<!-- dependency to be pickup from corporate repository which is other then central maven repository -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>5.2.0.BUILD-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+	
+	<!-- Defining corporate repository configuration for downloading thier dependency -->
+	<repositories>
+		<repository>
+			<id>spring-snapshot</id>
+			<url>http://repo.spring.io/libs-snapshot</url>
+			<snapshots><enabled>true</enabled></snapshots>
+			<releases><enabled>false</enabled></releases>
+		</repository>
+	</repositories>
+	<!-- Starting build section for Mavan build -->
+	<build>
+		<!-- Below name would override the name of the jar file to be created -->
+		<finalName>foo</finalName>
+		<plugins>
+			<!-- Example of compiler plugin starts -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.0</version>
+				<configuration>
+					<release>12</release>
+				</configuration>
+			</plugin>
+			<!-- Example of compiler plugin ends -->
+			<!-- Example of overriding default Jar plugin starts here -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>3.1.2</version>
+				<configuration>
+					<includes>
+						<include>**/*.xml</include>
+					</includes>
+				</configuration>
+			</plugin>
+			<!-- Example of overriding default Jar plugin ends here -->
+			<!-- Example of overriding default Source plugin starts here -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>3.1.0</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+						<phase>install</phase>
+					</execution>
+				</executions>
+			</plugin>
+			<!-- Example of overriding default Source plugin ends here -->
+			<!-- Example of overriding default Java Doc plugin starts here -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>3.1.0</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+						<phase>install</phase>
+					</execution>
+				</executions>
+			</plugin>
+			<!-- Example of overriding default Java Doc plugin ends here -->
+		</plugins>
+	</build>
+	<!-- Starting build section for Mavan build -->
+</project>
