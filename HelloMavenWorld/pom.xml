@@ -25,22 +25,26 @@
 			<artifactId>hibernate-core</artifactId>
 			<version>5.4.1.Final</version>
 		</dependency>
-		
-		<!-- dependency to be pickup from corporate repository which is other then central maven repository -->
+
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
-			<version>5.2.0.BUILD-SNAPSHOT</version>
+			<version>5.2.0.RELEASE</version>
 		</dependency>
 	</dependencies>
-	
+
 	<!-- Defining corporate repository configuration for downloading thier dependency -->
 	<repositories>
 		<repository>
 			<id>spring-snapshot</id>
 			<url>http://repo.spring.io/libs-snapshot</url>
-			<snapshots><enabled>true</enabled></snapshots>
-			<releases><enabled>false</enabled></releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
 		</repository>
 	</repositories>
 	<!-- Starting build section for Mavan build -->
